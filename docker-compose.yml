@@ -14,7 +14,7 @@ services:
     network_mode: host
     environment:
       - FORWARD_TO=goproxy
-      - PORTS=443
+      - PORTS=80,443,53,85
       - DB_PATH=/root/app/auth/db/database.sqlite3
       - UPSTREAM=
     volumes:
