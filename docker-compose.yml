@@ -1,5 +1,3 @@
-# ports: HOST:CONTAINER
-version: '3.8'
 services:
   docker-hoster:
     container_name: docker-hoster-ir
