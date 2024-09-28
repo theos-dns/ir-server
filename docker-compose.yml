@@ -12,6 +12,10 @@ services:
     restart: unless-stopped
     image: ghcr.io/theos-dns/auth:latest
     network_mode: host
+    depends_on:
+      - coap
+      - dns-server
+      - docker-hoster
     environment:
       - FORWARD_TO=goproxy
       - PORTS=80,443
