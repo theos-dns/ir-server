@@ -62,7 +62,7 @@ services:
       - "53:53/tcp"
       - "53:53/udp"
     volumes:
-      - ./coredns.config:/home/CoreConfigFile
+      - ./coredns.config:/home/CoreConfigFile/coredns.config
       - hosts-files:/etc/hosts_dir
 
 
