@@ -17,6 +17,7 @@ services:
       - PORTS=80,443,53,85
       - DB_PATH=/root/app/auth/db/database.sqlite3
       - UPSTREAM=
+      - PROTECT=dns-server:53@53,coap:85@5688
     volumes:
       - ${PWD}/database-auth.sqlite3:/root/app/auth/db/database.sqlite3
       - /etc/hosts:/etc/hosts
@@ -43,9 +44,6 @@ services:
     image: ghcr.io/theos-dns/coap:latest
     environment:
       - LOOKUP_SERVER=dns-server:53
-    ports:
-      - "85:5688/tcp"
-      - "85:5688/udp"
 
   dns-server:
     container_name: coredns-theos
@@ -56,9 +54,6 @@ services:
     environment:
       - IR_SERVER_IP=10.10.10.10
       - EU_SERVER_IP=20.20.20.20
-    ports:
-      - "53:53/tcp"
-      - "53:53/udp"
     volumes:
       - ./coredns.config:/home/CoreConfigFile/coredns.config
       - hosts-files:/etc/hosts_dir
