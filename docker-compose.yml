@@ -2,7 +2,7 @@
 version: '3.8'
 services:
   docker-hoster:
-    container_name: docker-hoster
+    container_name: docker-hoster-ir
     restart: unless-stopped
     image: docker.arvancloud.ir/dvdarias/docker-hoster
     volumes:
