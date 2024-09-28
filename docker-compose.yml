@@ -1,0 +1,71 @@
+# ports: HOST:CONTAINER
+version: '3.8'
+services:
+  docker-hoster:
+    container_name: docker-hoster
+    restart: unless-stopped
+    image: dvdarias/docker-hoster
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock
+      - /etc/hosts:/tmp/hosts
+
+  auth:
+    container_name: auth-ir-theos
+    restart: unless-stopped
+    image: ghcr.io/theos-dns/auth:latest
+    network_mode: host
+    environment:
+      - FORWARD_TO=goproxy
+      - PORTS=443
+      - DB_PATH=/root/app/auth/db/database.sqlite3
+      - UPSTREAM=
+    volumes:
+      - ${PWD}/database-auth.sqlite3:/root/app/auth/db/database.sqlite3
+      - /etc/hosts:/etc/hosts
+      - allowedIps:/var/nginx
+
+  xray:
+    container_name: xray-ir-theos
+    restart: unless-stopped
+    image: ghcr.io/xtls/xray-core:1.8.24
+    command: run -confdir /root/configs
+    volumes:
+      - ./xray-configs:/root/configs
+
+  goproxy:
+    container_name: goproxy-theos
+    restart: unless-stopped
+    image: ghcr.io/theos-dns/goproxy:v14.6
+    command: sps -p :80,:443 -q 8.8.8.8:53 -P socks5://xray:1080
+
+
+  coap:
+    container_name: coap-theos
+    restart: unless-stopped
+    image: ghcr.io/theos-dns/coap:latest
+    environment:
+      - LOOKUP_SERVER=dns-server:53
+    ports:
+      - "85:5688/tcp"
+      - "85:5688/udp"
+
+  dns-server:
+    container_name: coredns-theos
+    restart: unless-stopped
+    image: ghcr.io/theos-dns/coredns:latest
+    hostname: coredns
+    command: -conf /home/CoreConfigFile
+    environment:
+      - IR_SERVER_IP=10.10.10.10
+      - EU_SERVER_IP=20.20.20.20
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+    volumes:
+      - ./coredns.config:/home/CoreConfigFile
+      - hosts-files:/etc/hosts_dir
+
+
+volumes:
+  allowedIps:
+  hosts-files:

@@ -1,0 +1,46 @@
+{
+  "routing": {
+    "domainStrategy": "IPIfNonMatch",
+    "domainMatcher": "hybrid",
+    "balancers": [
+      {
+        "tag": "proxies",
+        "selector": [
+          "out1",
+          "out2",
+          "out3",
+          "out4",
+          "out5"
+        ],
+        "strategy": {
+          "type":"leastLoad"
+        }
+      }
+    ],
+    "rules": [
+      {
+        "inboundTag": [
+          "proxy"
+        ],
+        "balancerTag": "proxies",
+        "type": "field"
+      }
+    ]
+  },
+  "burstObservatory": {
+    "subjectSelector":[
+      "out1",
+      "out2",
+      "out3",
+      "out4",
+      "out5"
+    ],
+    "pingConfig": {
+      "destination": "http://www.google.com/gen_204",
+      "interval": "15m",
+      "connectivity": "http://www.google.com/gen_204",
+      "timeout": "3s",
+      "sampling": 2
+    }
+  }
+}

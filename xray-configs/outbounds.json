@@ -1,0 +1,33 @@
+{
+  "outbounds": [
+
+
+    {
+      "tag": "out1",
+      "protocol": "freedom"
+    },
+    {
+      "tag": "out2",
+      "protocol": "freedom"
+    },
+    {
+      "tag": "out3",
+      "protocol": "freedom"
+    },
+    {
+      "tag": "out4",
+      "protocol": "freedom"
+    },{
+      "tag": "out5",
+      "protocol": "freedom"
+    },
+
+
+
+
+    {
+      "tag": "direct-out",
+      "protocol": "freedom"
+    }
+  ]
+}
