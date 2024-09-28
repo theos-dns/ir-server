@@ -52,7 +52,7 @@ services:
     restart: unless-stopped
     image: ghcr.io/theos-dns/coredns:latest
     hostname: coredns
-    command: -conf /home/CoreConfigFile
+    command: -conf /home/CoreConfigFile/coredns.config
     environment:
       - IR_SERVER_IP=10.10.10.10
       - EU_SERVER_IP=20.20.20.20
