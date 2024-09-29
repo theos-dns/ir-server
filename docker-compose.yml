@@ -24,6 +24,7 @@ services:
       - coap
       - docker-hoster
       - local-resolver
+      - goproxy
     restart: unless-stopped
     image: ghcr.io/theos-dns/auth:latest
     network_mode: host
