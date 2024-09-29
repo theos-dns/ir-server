@@ -1,13 +1,15 @@
 upstream:
-  default:
-    - 1.1.1.1
+  timeout: 3s
+  groups:
+    default:
+      - 1.1.1.1
+      - 8.8.8.8
 
 ports:
   dns: 53
 
 hostsFile:
-  filePath: /etc/hosts
+  sources: /etc/hosts
   hostsTTL: 5s
-  refreshPeriod: 1s
   loading:
-    strategy: fast
+    refreshPeriod: 1s
