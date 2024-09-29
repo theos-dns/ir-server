@@ -1,0 +1,9 @@
+ports:
+  dns: 53
+
+hostsFile:
+  filePath: /etc/hosts
+  hostsTTL: 5s
+  refreshPeriod: 1s
+  loading:
+    strategy: fast
