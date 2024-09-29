@@ -19,6 +19,11 @@ services:
 
   auth:
     container_name: auth-ir-theos
+    depends_on:
+      - dns-server
+      - coap
+      - docker-hoster
+      - local-resolver
     restart: unless-stopped
     image: ghcr.io/theos-dns/auth:latest
     network_mode: host
@@ -28,6 +33,7 @@ services:
       - DB_PATH=/root/app/auth/db/database.sqlite3
       - UPSTREAM=
       - PROTECT=dns-server:53@53,coap:85@5688
+      - STARTUP_SLEEP=5
     volumes:
       - ${PWD}/database-auth.sqlite3:/root/app/auth/db/database.sqlite3
       - /etc/hosts:/etc/hosts
