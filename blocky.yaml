@@ -1,15 +1,16 @@
-upstream:
+upstreams:
   timeout: 3s
   groups:
     default:
-      - 1.1.1.1
       - 8.8.8.8
+      - 1.1.1.1
 
 ports:
   dns: 53
 
 hostsFile:
-  sources: /etc/hosts
+  sources:
+    - "/etc/hosts"
   hostsTTL: 5s
   loading:
     refreshPeriod: 1s
