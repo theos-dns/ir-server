@@ -1,3 +1,7 @@
+upstream:
+  default:
+    - 1.1.1.1
+
 ports:
   dns: 53
 
