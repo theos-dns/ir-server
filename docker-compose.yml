@@ -4,7 +4,7 @@ services:
     image: ghcr.io/0xerr0r/blocky:v0.24
     restart: unless-stopped
     ports:
-      - 127.0.0.53:53:53/udp
+      - 127.0.0.1:153:53/udp
     volumes:
       - ./blocky.yaml:/app/config.yml
       - /etc/hosts:/etc/hosts
@@ -35,6 +35,7 @@ services:
       - UPSTREAM=
       - PROTECT=dns-server:53@53,coap:85@5688
       - STARTUP_SLEEP=5
+      - RESOLVER=127.0.0.1:153
     volumes:
       - ${PWD}/database-auth.sqlite3:/root/app/auth/db/database.sqlite3
       - /etc/hosts:/etc/hosts
