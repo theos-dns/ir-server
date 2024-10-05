@@ -1,4 +1,4 @@
 .idea
 .env
 
-xray-configs
+xray-configs/*
