@@ -10,7 +10,8 @@
           "out2",
           "out3",
           "out4",
-          "out5"
+          "out5",
+          "out6"
         ],
         "strategy": {
           "type":"leastLoad"
@@ -33,7 +34,8 @@
       "out2",
       "out3",
       "out4",
-      "out5"
+      "out5",
+      "out6"
     ],
     "pingConfig": {
       "destination": "http://www.google.com/gen_204",

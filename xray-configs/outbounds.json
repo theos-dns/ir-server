@@ -20,6 +20,9 @@
     },{
       "tag": "out5",
       "protocol": "freedom"
+    },{
+      "tag": "out6",
+      "protocol": "freedom"
     },
 
 
