@@ -1,0 +1,47 @@
+{
+  "outbounds": [
+    {
+      "tag": "out1",
+      "type": "block"
+    },
+    {
+      "tag": "out2",
+      "type": "block"
+    },
+    {
+      "tag": "out3",
+      "type": "block"
+    },
+
+
+    {
+      "type": "urltest",
+      "tag": "auto-out",
+
+      "outbounds": [
+        "out1",
+        "out2",
+        "out3"
+      ],
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "15s",
+      "tolerance": 500,
+      "idle_timeout": "30s",
+      "interrupt_exist_connections": false
+    },
+
+
+    {
+      "type": "direct",
+      "tag": "direct"
+    },
+    {
+      "type": "block",
+      "tag": "block"
+    },
+    {
+      "type": "dns",
+      "tag": "dns-out"
+    }
+  ]
+}

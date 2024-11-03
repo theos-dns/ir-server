@@ -1,0 +1,6 @@
+{
+  "route": {
+    "final": "auto-out",
+    "auto_detect_interface": true
+  }
+}

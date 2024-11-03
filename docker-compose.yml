@@ -24,12 +24,12 @@ services:
       - coap
       - docker-hoster
       - local-resolver
-      - goproxy
+      - sing-box
     restart: unless-stopped
     image: ghcr.io/theos-dns/auth:latest
     network_mode: host
     environment:
-      - FORWARD_TO=goproxy
+      - FORWARD_TO=sing-box
       - PORTS=80,443
       - DB_PATH=/root/app/auth/db/database.sqlite3
       - UPSTREAM=${UPSTREAMS}
@@ -42,20 +42,13 @@ services:
       - /etc/hosts:/etc/hosts
       - allowedIps:/var/nginx
 
-  xray:
-    container_name: xray-ir-theos
+  sing-box:
+    container_name: sing-box-ir-theos
     restart: unless-stopped
-    image: ghcr.io/xtls/xray-core:1.8.24
-    command: run -confdir /root/configs
+    image: ghcr.io/sagernet/sing-box:v1.10.1
+    command: run --config-directory /root/configs
     volumes:
-      - ./xray-configs:/root/configs
-
-  goproxy:
-    container_name: goproxy-theos
-    restart: unless-stopped
-    image: ghcr.io/theos-dns/goproxy:v14.6
-    command: sps -p :80,:443 -q 8.8.8.8:53 -P socks5://xray:1080
-
+      - ./sing-box-configs:/root/configs
 
   coap:
     container_name: coap-theos

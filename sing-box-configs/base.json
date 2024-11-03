@@ -1,0 +1,23 @@
+{
+  "log": {
+    "disabled": false,
+    "level": "debug",
+    "timestamp": true
+  },
+  "dns": {
+    "strategy": "prefer_ipv4",
+    "servers": [
+      {
+        "tag": "dns_resolver",
+        "address": "8.8.8.8"
+      }
+    ],
+    "final": "dns_resolver"
+  },
+  "ntp": {
+    "enabled": false,
+    "server": "0.asia.pool.ntp.org",
+    "server_port": 123,
+    "interval": "30m"
+  }
+}
