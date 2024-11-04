@@ -3,3 +3,5 @@
 
 xray-configs
 xray-configs/**/*
+
+*/**/*.pem

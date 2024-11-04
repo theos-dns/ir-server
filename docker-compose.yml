@@ -33,7 +33,7 @@ services:
       - PORTS=80,443
       - DB_PATH=/root/app/auth/db/database.sqlite3
       - UPSTREAM=${UPSTREAMS}
-      - PROTECT=dns-server:53@53,coap:85@5688
+      - PROTECT=dns-server:53@dns-server:853@dns-server:3443@53,coap:85@5688
       - STARTUP_SLEEP=5
       - RESOLVER=127.0.0.1:153
       - ADMIN_TOKEN=${ADMIN_TOKEN}
@@ -66,7 +66,10 @@ services:
     environment:
       - IR_SERVER_IP=${IR_SERVER_IPS}
       - EU_SERVER_IP=${EU_SERVER_IPS}
+      - SSL_KEY_PATH=/home/ssl-keys/key.pem
+      - SSL_CERT_PATH=/home/ssl-keys/cert.pem
     volumes:
+      - ./ssl-keys:/home/ssl-keys
       - ./coredns.config:/home/CoreConfigFile/coredns.config
       - hosts-files:/etc/hosts_dir
 
