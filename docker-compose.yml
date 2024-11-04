@@ -33,7 +33,7 @@ services:
       - PORTS=80,443
       - DB_PATH=/root/app/auth/db/database.sqlite3
       - UPSTREAM=${UPSTREAMS}
-      - PROTECT=dns-server:53@dns-server:853@dns-server:3443@53,coap:85@5688
+      - PROTECT=dns-server:53@53,dns-server:853@853,dns-server:3443@3443,coap:85@5688
       - STARTUP_SLEEP=5
       - RESOLVER=127.0.0.1:153
       - ADMIN_TOKEN=${ADMIN_TOKEN}
