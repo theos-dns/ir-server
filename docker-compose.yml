@@ -68,6 +68,7 @@ services:
       - EU_SERVER_IP=${EU_SERVER_IPS}
       - SSL_KEY_PATH=/home/ssl-keys/key.pem
       - SSL_CERT_PATH=/home/ssl-keys/cert.pem
+      - SSL_CA_PATH=/home/ssl-keys/origin_ca_rsa_root.pem
     volumes:
       - ./ssl-keys:/home/ssl-keys
       - ./coredns.config:/home/CoreConfigFile/coredns.config
