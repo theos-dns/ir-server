@@ -7,6 +7,6 @@ $ docker compose up -d
 ```
 
 ## Generate SSL certs for DoH and DoT
-Fallow this instruction to create ssl for your domain in cloudflare: [cloudflare client certificate](https://developers.cloudflare.com/ssl/client-certificates/create-a-client-certificate/)
+Fallow this instruction to create ssl for your domain : [acme.sh](https://github.com/acmesh-official/acme.sh)
 
-put `key.pem` and `cert.pem` files in [`ssl-keys`](./ssl-keys).
+put `key.pem` and `cert.pem`(fullchain.cer) files in [`ssl-keys`](./ssl-keys).
