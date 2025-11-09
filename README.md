@@ -1,4 +1,4 @@
-# theos ir server
+# Theos IR Server Setup
 
 ## run
 ```bash
