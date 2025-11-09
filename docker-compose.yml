@@ -1,6 +1,6 @@
 services:
   local-resolver:
-    image: ghcr.io/0xerr0r/blocky:v0.27
+    image: ghcr.io/0xerr0r/blocky:v0.27.0
     restart: unless-stopped
     ports:
       - 127.0.0.1:153:53/udp
