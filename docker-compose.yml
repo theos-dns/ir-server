@@ -1,6 +1,5 @@
 services:
   local-resolver:
-    container_name: local-resolver
     image: ghcr.io/0xerr0r/blocky:v0.27
     restart: unless-stopped
     ports:
@@ -10,23 +9,21 @@ services:
       - /etc/hosts:/etc/hosts
 
   docker-hoster:
-    container_name: docker-hoster-ir
-    restart: unless-stopped
     image: docker.arvancloud.ir/dvdarias/docker-hoster
+    restart: unless-stopped
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock
       - /etc/hosts:/tmp/hosts
 
   auth:
-    container_name: auth-ir-theos
+    image: ghcr.io/theos-dns/auth:latest
+    restart: unless-stopped
     depends_on:
       - dns-server
       - coap
       - docker-hoster
       - local-resolver
       - sing-box
-    restart: unless-stopped
-    image: ghcr.io/theos-dns/auth:latest
     network_mode: host
     environment:
       - FORWARD_TO=sing-box
@@ -43,24 +40,21 @@ services:
       - allowedIps:/var/nginx
 
   sing-box:
-    container_name: sing-box-ir-theos
-    restart: unless-stopped
     image: ghcr.io/sagernet/sing-box:v1.12.12
+    restart: unless-stopped
     command: run --config-directory /root/configs
     volumes:
       - ./sing-box-configs:/root/configs
 
   coap:
-    container_name: coap-theos
-    restart: unless-stopped
     image: ghcr.io/theos-dns/coap:latest
+    restart: unless-stopped
     environment:
       - LOOKUP_SERVER=dns-server:53
 
   dns-server:
-    container_name: coredns-theos
-    restart: unless-stopped
     image: ghcr.io/theos-dns/coredns:latest
+    restart: unless-stopped
     hostname: coredns
     command: -conf /home/CoreConfigFile/coredns.config
     environment:
