@@ -1,7 +1,7 @@
 services:
   local-resolver:
     container_name: local-resolver
-    image: ghcr.io/0xerr0r/blocky:v0.24
+    image: ghcr.io/0xerr0r/blocky:v0.27
     restart: unless-stopped
     ports:
       - 127.0.0.1:153:53/udp
@@ -45,7 +45,7 @@ services:
   sing-box:
     container_name: sing-box-ir-theos
     restart: unless-stopped
-    image: ghcr.io/sagernet/sing-box:v1.10.1
+    image: ghcr.io/sagernet/sing-box:v1.12.12
     command: run --config-directory /root/configs
     volumes:
       - ./sing-box-configs:/root/configs
