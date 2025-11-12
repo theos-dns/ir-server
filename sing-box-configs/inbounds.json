@@ -4,17 +4,13 @@
       "type": "direct",
       "tag": "in-443",
       "listen": "::",
-      "listen_port": 443,
-      "sniff": true,
-      "sniff_override_destination": true
+      "listen_port": 443
     },
     {
       "type": "direct",
       "tag": "in-80",
       "listen": "::",
-      "listen_port": 80,
-      "sniff": true,
-      "sniff_override_destination": true
+      "listen_port": 80
     }
   ]
 }

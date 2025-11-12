@@ -8,8 +8,9 @@
     "strategy": "prefer_ipv4",
     "servers": [
       {
+        "type": "udp",
         "tag": "dns_resolver",
-        "address": "8.8.8.8"
+        "server": "8.8.8.8"
       }
     ],
     "final": "dns_resolver"
