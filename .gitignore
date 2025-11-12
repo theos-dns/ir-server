@@ -5,3 +5,5 @@ xray-configs
 xray-configs/**/*
 
 */**/*.pem
+
+database-auth.sqlite3
