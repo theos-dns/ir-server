@@ -40,7 +40,7 @@ services:
       - allowedIps:/var/nginx
 
   sing-box:
-    image: ghcr.io/sagernet/sing-box:v1.12.12
+    image: ghcr.io/sagernet/sing-box:v1.10.7
     restart: unless-stopped
     command: run --config-directory /root/configs
     volumes:

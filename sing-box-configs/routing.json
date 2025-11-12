@@ -1,22 +1,5 @@
 {
   "route": {
-    "rules": [
-      {
-        "action": "sniff"
-      },
-      {
-        "protocol": "dns",
-        "action": "hijack-dns"
-      },
-      {
-        "inbound": [
-          "in-443",
-          "in-80"
-        ],
-        "action": "route",
-        "outbound": "auto-out"
-      }
-    ],
     "final": "auto-out",
     "auto_detect_interface": true
   }
