@@ -9,7 +9,7 @@ services:
       - /etc/hosts:/etc/hosts
 
   docker-hoster:
-    image: docker.arvancloud.ir/dvdarias/docker-hoster
+    image: ghcr.io/mrmohebi/docker-hoster
     restart: unless-stopped
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock
